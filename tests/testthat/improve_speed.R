@@ -99,7 +99,7 @@ test_that("test cla_loglik_cpp", {
 
   testthat::expect_equal(r_func(), cpp_func(), tolerance = 0.001)
 
-  repl <- 30
+  repl <- 100
   timez <- c()
   for (i in 1:repl) {
     t0 <- Sys.time()

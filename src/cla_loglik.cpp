@@ -66,6 +66,12 @@ double calc_ll_cla(const Rcpp::List& ll,
       y = states[focal_node - 1];
 
       bno::integrate(od, y, 0.0, timeInte[i], 0.1 * timeInte[i]);
+   /* std::unique_ptr<MyOde_cla> od_ptr = std::make_unique<MyOde_cla>(od);
+
+    odeintcpp::integrate(std::move(od_ptr), // ode class object
+                         y, // state vector
+                         0.0, // t0
+                         timeInte[i]); // t1*/
 
       if (i == 0) nodeN = y;
       if (i == 1) nodeM = y;

@@ -14,15 +14,3 @@ calThruNodes_cpp <- function(ances, states_R, forTime_R, lambdas, mus, Q, num_th
     .Call(`_secsseCPP_calThruNodes_cpp`, ances, states_R, forTime_R, lambdas, mus, Q, num_threads)
 }
 
-#' function to calculate log likelihood using cpp
-#' @param ances vector of ancestors
-#' @param states_R numericmatrix of states
-#' @param forTime_R numericmatrix of phylogeny information
-#' @param lambdas vector of lambdas
-#' @param mus vector of mus
-#' @param Q numericmatrix with transition rates
-#' @export
-cla_calThruNodes_cpp <- function(ances, states_R, forTime_R, lambdas, mus, Q) {
-    .Call(`_secsseCPP_cla_calThruNodes_cpp`, ances, states_R, forTime_R, lambdas, mus, Q)
-}
-
