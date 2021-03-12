@@ -75,16 +75,6 @@ double calc_ll(const Rcpp::NumericVector& ll,
   return loglik;
 }
 
-
-//' function to calculate log likelihood using cpp
-//' @param ances vector of ancestors
-//' @param states_R numericmatrix of states
-//' @param forTime_R numericmatrix of phylogeny information
-//' @param lambdas vector of lambdas
-//' @param mus vector of mus
-//' @param Q numericmatrix with transition rates
-//' @param num_threads
-//' @export
 // [[Rcpp::export]]
 Rcpp::List calThruNodes_cpp(const NumericVector& ances,
                             const NumericMatrix& states_R,

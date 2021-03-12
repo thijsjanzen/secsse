@@ -1,11 +1,9 @@
 #include <vector>
-
-#include <Rcpp.h>
-using namespace Rcpp;
-
 #include "odeint.h"
 #include "util.h"
 
+#include <Rcpp.h>
+using namespace Rcpp;
 
 double calc_ll_cla(const Rcpp::List& ll,
                    const Rcpp::NumericVector& mm,
@@ -66,12 +64,6 @@ double calc_ll_cla(const Rcpp::List& ll,
       y = states[focal_node - 1];
 
       bno::integrate(od, y, 0.0, timeInte[i], 0.1 * timeInte[i]);
-   /* std::unique_ptr<MyOde_cla> od_ptr = std::make_unique<MyOde_cla>(od);
-
-    odeintcpp::integrate(std::move(od_ptr), // ode class object
-                         y, // state vector
-                         0.0, // t0
-                         timeInte[i]); // t1*/
 
       if (i == 0) nodeN = y;
       if (i == 1) nodeM = y;
@@ -119,24 +111,13 @@ double calc_ll_cla(const Rcpp::List& ll,
   return sum_loglik;
 }
 
-
-
-//' function to calculate log likelihood using cpp
-//' @param ances vector of ancestors
-//' @param states_R numericmatrix of states
-//' @param forTime_R numericmatrix of phylogeny information
-//' @param lambdas vector of lambdas
-//' @param mus vector of mus
-//' @param Q numericmatrix with transition rates
-//' @export
 // [[Rcpp::export]]
-Rcpp::List cla_calThruNodes_cpp(const NumericVector& ances,
-                                const NumericMatrix& states_R,
-                                const NumericMatrix& forTime_R,
+Rcpp::List cla_calThruNodes_cpp(const Rcpp::NumericVector& ances,
+                                const Rcpp::NumericMatrix& states_R,
+                                const Rcpp::NumericMatrix& forTime_R,
                                 const Rcpp::List& lambdas,
-                                const NumericVector& mus,
-                                const NumericMatrix& Q) {
-
+                                const Rcpp::NumericVector& mus,
+                                const Rcpp::NumericMatrix& Q) {
 
 try {
   std::vector< std::vector< double >> states, forTime;
